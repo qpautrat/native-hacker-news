@@ -1,3 +1,6 @@
 {
-	"id": "org.nativescript.hackernews"
+	"id": "org.nativescript.hackernews",
+	"tns-ios": {
+		"version": "0.9.1"
+	}
 }
