@@ -1,0 +1,12 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+    <ListView items="{{ topstories }}">
+        <ListView.itemTemplate>
+            <StackLayout>
+                <Label text="{{ title }}" />
+                <StackLayout orientation="horizontal">
+                    <Label text="{{'By ' + by + ' - ' + score + ' points'}}" />
+                </StackLayout>
+            </StackLayout>
+        </ListView.itemTemplate>
+    </ListView>
+</Page>
