@@ -3,7 +3,7 @@
         <ListView.itemTemplate>
             <StackLayout>
                 <Label text="{{ title }}" />
-                <StackLayout orientation="horizontal">
+                <StackLayout>
                     <Label text="{{'By ' + by + ' - ' + score + ' points'}}" />
                 </StackLayout>
             </StackLayout>
