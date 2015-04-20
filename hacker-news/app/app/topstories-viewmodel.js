@@ -1,35 +1,29 @@
-viewModel = {};
+var observableArray = require("data/observable-array");
 
-viewModel.topstories = [];
+viewModel = {
+    'storyIds': [],
+    'topstories': new observableArray.ObservableArray(),
+    'perPage': 20
+};
 
-viewModel.loadStories = function() {
-    this.topstories = [
-        {
-            'title': 'Nokia Agrees to Buy Alcatel-Lucent for $16.6B',
-            'by': 'alphadevx',
-            'score': 39
-        },
-        {
-            'title': 'Boolean parameters to API functions considered harmful (2011)',
-            'by': 'luu',
-            'score': 69
-        },
-        {
-            'title': '32-bit X86 Position Independent Code – It\'s That Bad',
-            'by': 'cremno',
-            'score': 63
-        },
-        {
-            'title': 'Finding bugs in SQLite, the easy way',
-            'by': 'robin_reala',
-            'score': 275
-        },
-        {
-            'title': 'New Mexico outlaws civil asset forfeiture',
-            'by': 'hackercurious',
-            'score': 78
-        }
-    ];
+viewModel.getStoryIds = function() {
+    for (i = 0; i < 500; i++) {
+        this.storyIds.push(i + 1);
+    }
+}
+
+viewModel.loadStory = function(id) {
+    return {
+        'title': 'Story (' + id + ')',
+        'by': 'foo',
+        'score': 0
+    };
+}
+
+viewModel.loadNextStories = function() {
+    for (i = 0; i < this.perPage; i++) {
+        this.topstories.push(this.loadStory(this.storyIds[this.topstories.length]));
+    }
 }
 
 module.exports = viewModel;

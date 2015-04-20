@@ -3,7 +3,7 @@
         <StackLayout cssClass="topbar">
             <Label  text="HackerNews with NativeScript" />
         </StackLayout>
-        <ListView items="{{ topstories }}">
+        <ListView items="{{ topstories }}" loadMoreItems="loadMoreItems">
             <ListView.itemTemplate>
                 <StackLayout cssClass="topstory">
                     <Label text="{{ title }}" />
