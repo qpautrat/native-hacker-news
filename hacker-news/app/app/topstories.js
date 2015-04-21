@@ -5,7 +5,6 @@ exports.pageLoaded = function(args) {
     var page = args.object;
 
     model.getStoryIds();
-    model.loadNextStories();
 
     page.bindingContext = model;
 };
