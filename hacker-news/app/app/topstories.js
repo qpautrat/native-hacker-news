@@ -12,5 +12,5 @@ exports.pageLoaded = function(args) {
 
 exports.loadMoreItems = function(data) {
     console.log("loadMoreItems");
-    model.loadNextStories();
+    model.loadNextStories(5);
 };

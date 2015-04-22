@@ -1,29 +1,34 @@
 var observableArray = require("data/observable-array");
+var http = require('http');
 
 viewModel = {
     'storyIds': [],
-    'topstories': new observableArray.ObservableArray(),
-    'perPage': 20
+    'topstories': new observableArray.ObservableArray()
 };
 
 viewModel.getStoryIds = function() {
-    for (i = 0; i < 500; i++) {
-        this.storyIds.push(i + 1);
-    }
+    var _this = this;
+    http.getJSON("https://hacker-news.firebaseio.com/v0/topstories.json").then(function (json) {
+        _this.storyIds = json;
+        _this.loadNextStories(10);
+    });
 }
 
-viewModel.loadStory = function(id) {
-    return {
-        'title': 'Story (' + id + ')',
-        'by': 'foo',
-        'score': 0
-    };
-}
-
-viewModel.loadNextStories = function() {
-    for (i = 0; i < this.perPage; i++) {
-        this.topstories.push(this.loadStory(this.storyIds[this.topstories.length]));
+viewModel.loadNextStories = function(nb) {
+    if (!nb) {
+        nb = 1;
     }
+
+    var _this = this;
+    http.getJSON("https://hacker-news.firebaseio.com/v0/item/" + this.storyIds.shift() + ".json").then(function (json) {
+        if (json) {
+                _this.topstories.push(json);
+            nb--;
+            if (nb != 0) {
+                _this.loadNextStories(nb);
+            }
+        }
+    });
 }
 
 module.exports = viewModel;
