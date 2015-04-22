@@ -22,7 +22,7 @@ viewModel.loadNextStories = function(nb) {
     var _this = this;
     http.getJSON("https://hacker-news.firebaseio.com/v0/item/" + this.storyIds.shift() + ".json").then(function (json) {
         if (json) {
-                _this.topstories.push(json);
+            _this.topstories.push(json);
             nb--;
             if (nb != 0) {
                 _this.loadNextStories(nb);
