@@ -1,17 +1,12 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-    <StackLayout>
-        <StackLayout cssClass="topbar">
-            <Label  text="HackerNews with NativeScript" />
-        </StackLayout>
-        <ListView items="{{ topstories }}" loadMoreItems="loadMoreItems">
-            <ListView.itemTemplate>
-                <StackLayout cssClass="topstory">
-                    <Label text="{{ title }}" />
-                    <StackLayout>
-                        <Label text="{{'By ' + by + ' - ' + score + ' points'}}" cssClass="author" />
-                    </StackLayout>
+    <ListView items="{{ topstories }}" loadMoreItems="loadMoreItems">
+        <ListView.itemTemplate>
+            <StackLayout cssClass="topstory">
+                <Label text="{{ title }}" />
+                <StackLayout>
+                    <Label text="{{'By ' + by + ' - ' + score + ' points'}}" cssClass="author" />
                 </StackLayout>
-            </ListView.itemTemplate>
-        </ListView>
-    </StackLayout>
+            </StackLayout>
+        </ListView.itemTemplate>
+    </ListView>
 </Page>
